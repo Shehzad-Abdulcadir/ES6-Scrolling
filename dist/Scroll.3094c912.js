@@ -127,12 +127,45 @@ exports.default = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Scroll = function Scroll(elements) {
-  _classCallCheck(this, Scroll);
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-  this.page = document.querySelector(".js-body");
-  console.log(elements);
-};
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Scroll =
+/*#__PURE__*/
+function () {
+  function Scroll(elements) {
+    _classCallCheck(this, Scroll);
+
+    this.page = document.querySelector(".js-body");
+    this.isElementInViewport(elements);
+  }
+
+  _createClass(Scroll, [{
+    key: "isElementInViewport",
+    value: function isElementInViewport(element) {
+      //Vars 
+      var el = Array.from(document.querySelectorAll('.element')),
+          watch = function watch(entries) {
+        entries.forEach(function (entry) {
+          if (entry.intersectionRatio > 0) {
+            // Adds Class when element comes into view
+            entry.target.classList.add('in-viewport'); // Unobserves this element
+
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+
+      var observer = new IntersectionObserver(watch);
+      el.forEach(function (val) {
+        observer.observe(val);
+      });
+    }
+  }]);
+
+  return Scroll;
+}();
 
 var _default = Scroll;
 exports.default = _default;
@@ -164,7 +197,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57535" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60419" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

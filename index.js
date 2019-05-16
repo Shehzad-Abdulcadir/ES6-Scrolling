@@ -5,8 +5,6 @@ import './scss/styles.scss'
 import ScrollController from "./js/controllers/ScrollController";
 
 function Main() {
-    console.log('test');
-
     const scroll = new ScrollController;
 }
 

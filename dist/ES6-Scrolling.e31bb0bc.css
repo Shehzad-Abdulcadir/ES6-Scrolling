@@ -337,4 +337,22 @@ template {
   display: none;
 }
 
+.element {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+}
+.element--1 {
+  background-color: #40798C;
+}
+.element--2 {
+  background-color: #CFD7C7;
+}
+.element--3 {
+  background-color: #F6F1D1;
+}
+.element.in-viewport {
+  background-color: #70A9A1;
+}
+
 /*# sourceMappingURL=/ES6-Scrolling.e31bb0bc.css.map */
